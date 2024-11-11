@@ -57,4 +57,4 @@ class Data {
 
 
 // Highlight bugs (if any)
-// Will this code run if this was Javascript and Typescript
+// Question :- Will this code run if this was Javascript and Typescript
