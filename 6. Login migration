@@ -1,0 +1,11 @@
+Suggest a solution to the following problem
+
+The login system of a platform uses md5 with unique salts for each use for hashing to generate hashed passwords using openssl utility.
+The system has over a million users and possibly a million unique passwords.
+
+Being a security engineer, you’ve been tasked to upgrade the md5 hashing to the more secure PBKDF2 algorithm.
+
+Since there’s no way to get the plaintext back from the stored hashed passwords, you cannot directly migrate the passwords to the new format. Without forcing the users to manually generate a new password, suggest a way to migrate the users to be authenticated with the new mechanism.
+
+
+// Suggest the approach using pseudo code here
