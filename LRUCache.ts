@@ -7,3 +7,18 @@
 // Write a program to implement the functionality of the cache.
 
 // NOTE: Don't use/assume any structures that retain the order of insertion.
+class CacheEntry {
+    valid: Boolean = false;
+    LRU: Boolean = false;
+    data: Number = 0;
+
+    constructor() {
+        
+    }
+}
+
+// memory addresses to read
+const addresses: Array<Number> = [
+
+]
+

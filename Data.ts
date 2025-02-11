@@ -5,7 +5,7 @@ class Data {
 		[id: string]: string[],
 	};
 	version: number;
-
+	// initialise type, examples, and version
 	constructor ( id: string ) {
 		this.id = id;
   };
@@ -24,6 +24,7 @@ class Data {
 			  examples,
 		  };
 
+			// didn't import fs
 		  fs.writeFileSync(
 			  '/tmp/file.json',
         JSON.stringify( saveData, null, 4 ),			
@@ -35,11 +36,15 @@ class Data {
 
   readEntries = () => {
 	  try {
+			// incorrect single quote character
+			// didn't import fs
 		  const loadData: string = fs.readFileSync( ‘/tmp/file.json’ );
 		  const parsedFile: {
 			  id: string,
 			  type: string,
 			  examples: {
+					// incorrect declaration, should be:
+					// [id: string]: string[]
 				  [id: string]: examples[],
 			  },
 			  version: number,
@@ -50,6 +55,7 @@ class Data {
 		  this.type = parsedFile.type;
 		  this.examples = parsedFile.examples;
 	  } catch ( ex ) {
+		// return ex.message for more verbose error handling
 		  console.log( ex.name );
 	  }
   };
@@ -58,3 +64,5 @@ class Data {
 
 // Highlight bugs (if any)
 // Question :- Will this code run if this was Javascript and Typescript
+/* for it to run in js type annotation must be removed
+*/

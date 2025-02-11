@@ -1,4 +1,4 @@
-#Create a HTML page which includes the following:-
+<!-- #Create a HTML page which includes the following:-
 # - An input area to take a number input
 # - A button that calls a function called “increment”
 # - The initial result shown would be undefined
@@ -10,4 +10,28 @@
 # 2. The initial increment should show the output as the number input.
 # 3. Once the initial result is cleared with the increment value, the increment value should use the existing result.
 
-# Code here
+# Code here -->
+
+<html>
+<head>
+    <script>
+        function increment() {
+            const result = Number.parseInt(document.getElementById("result").innerText);
+            let val;
+
+            if(result) {
+                val = result;
+            } else {
+                val = Number.parseInt(document.getElementById("text-box").value);
+            }
+
+            document.getElementById("result").innerText = val + 1;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="text-box"/>
+    <button onclick="increment()">++</button>
+    <div id="result"></div>
+</body>
+</html>

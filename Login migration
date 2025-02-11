@@ -1,11 +1,47 @@
-Suggest a solution to the following problem
+# Suggest a solution to the following problem
 
-The login system of a platform uses md5 with unique salts for each use for hashing to generate hashed passwords using openssl utility.
+The login system of a platform uses md5 with unique salts for each use for hashing to generate hashed passwords using
+openssl utility.
+
 The system has over a million users and possibly a million unique passwords.
 
 Being a security engineer, you’ve been tasked to upgrade the md5 hashing to the more secure PBKDF2 algorithm.
 
-Since there’s no way to get the plaintext back from the stored hashed passwords, you cannot directly migrate the passwords to the new format. Without forcing the users to manually generate a new password, suggest a way to migrate the users to be authenticated with the new mechanism.
+Since there’s no way to get the plaintext back from the stored hashed passwords, you cannot directly migrate the
+passwords to the new format. Without forcing the users to manually generate a new password, suggest a way to migrate the
+users to be authenticated with the new mechanism.
 
+## Solution
 
-// Suggest the approach using pseudo code here
+- Update the password database to record the hash type for each password, default md5
+- Update the authentication step
+
+```python
+
+def password(hash, hash_type, password, salt):
+    if hash_type == "md5":
+        if(md5_hash(password, salt) == stored_hash):
+            # login successful
+            # update password and log in as usual
+            user.hash = pbkdf2_hash(password, salt)
+            user.hash_type = "pbkdf2"
+            user.salt = generate_salt()
+            database_update(user)
+            return True
+        else:
+            return False
+
+    elif hash_type == "pbkdf2":
+        # user password has already been updated
+        return authenticate(stored_hash, salt, password)
+```
+
+### Benefits
+
+- Both MD5 and PBKDF2 will work without user action
+- Maintains security
+- Doesn't require plaintext passwords
+
+### Further required action
+
+- Force users to log in after a period of time to update all user passwords and deprecate MD5

@@ -14,4 +14,19 @@
 
 
 // Code here
+function fibonacci(n) {
+    if(n <= 1)
+        return n;
 
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+
+const args = process.argv.slice(2);
+
+const n = Number(args[0]);
+if(!Number.isInteger(n))
+    console.log("Input is not an integer");
+    return -1;
+
+const result = fibonacci(n);
+console.log(result);

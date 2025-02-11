@@ -1,4 +1,33 @@
-# Write an HTML element to keep two divs, one placed at the center and the other right side of the screen.
+<!-- # Write an HTML element to keep two divs, one placed at the center and the other right side of the screen.
 # The elements must be aligned together in one container
 
-# Code here
+# Code here -->
+<html>
+<head>
+    <style>
+        .flex-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+        .centre {
+            position: absolute;
+            left: 50%;
+        }
+        .right {
+            position: absolute;
+            right: 0%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex-box">
+        <div class="centre">centre</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>
